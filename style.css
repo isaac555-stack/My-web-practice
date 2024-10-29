@@ -1,0 +1,53 @@
+body {
+  background-color: antiquewhite;
+  margin: 0;
+}
+
+.heading {
+  text-align: center;
+  font-variant: small-caps;
+  color: azure;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-transform: capitalize;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+h1,
+h2,
+p,
+h3 {
+  margin: 3px;
+  text-align: left;
+}
+
+.reference {
+  background-color: rgb(4, 4, 36);
+  opacity: 0.9;
+
+  border-style: ridge;
+  border-bottom-color: rgb(0, 0, 136);
+  margin: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-color: aqua;
+}
+
+a {
+  color: rgb(64, 255, 16);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+img {
+  display: block;
+  float: left;
+  width: 500px;
+}
+
+button {
+  background-color: rgb(5, 6, 61);
+  color: rgb(3, 255, 3);
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+}
