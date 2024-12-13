@@ -1,102 +1,42 @@
 $("#hamburger").on("click", function () {
-  //-
-  $(".collapse").slideToggle(); //-
-}); //-
-//-
+  $(".collapse").slideToggle();
+});
+
 $("#bell").on("click", function () {
-  //-
-  document.querySelector(".off-canvas").classList.toggle("open"); //-
-}); //-
-//-
+  document.querySelector(".off-canvas").classList.toggle("open");
+});
+
 $(".removeCanvas").on("click", function () {
-  //-
-  $(".off-canvas").removeClass("open"); //-
-}); //-
-//-
+  $(".off-canvas").removeClass("open");
+});
+
 $(".container").on("click", function () {
-  //-
-  $(".off-canvas").removeClass("open"); //-
-  $(".collapse").slideUp(); //-
-}); //-
-// // Carousel functionality//+
-// const $track = $(".carousel-track");
-// const $slides = $(".carousel-item");
-// const totalSlides = $slides.length;
-// const $indicators = $(".carousel-indicator > span");//+
+  $(".off-canvas").removeClass("open");
+  $(".collapse").slideUp();
+});
 
-// let currentSlideIndex = 0;//+
-// let intervalId;//+
+$(".person-circle").on("click", function () {
+  $(".form-signin").addClass("open");
+  $(".container").css("opacity", "0.3");
+});
 
-// function updateSlidePosition() {
-//   const newPosition = -currentSlideIndex * 100 + "%";
-//   $track.css("transform", `translateX(${newPosition})`);
-// }
-
-// function updateActiveSlide() {//+
-//   $indicators.removeClass("active");//+
-//   $($indicators[currentSlideIndex]).addClass("active");//+
-// }//+
-
-// function moveToSlide(index) {//+
-//   currentSlideIndex = (index + totalSlides) % totalSlides;//+
-
-// }//+
-
-// function nextSlide() {//+
-//   moveToSlide(currentSlideIndex + 1);//+
-// }//+
-// //+
-// function prevSlide() {//+
-//   moveToSlide(currentSlideIndex - 1);//+
-// }//+
-// //+
-// $(".btn-next").click(nextSlide);//+
-// //+
-// $(".btn-prev").click(prevSlide);//+
-// //+
-// // Allow clicking on indicators to jump to a slide//+
-// $indicators.each(function(index) {//+
-//   $(this).click(function() {
-//     moveToSlide(index);
-//     resetInterval();
-//   });
-// });
-
-// //+
-// function startInterval() {//+
-//   intervalId = setInterval(nextSlide, 3000);//+
-// }//+
-// //+
-// function resetInterval() {//+
-//   clearInterval(intervalId);//+
-//   startInterval();//+
-// }//+
-// //+
-// // Start automatic sliding//+
-// startInterval();//+
-// //+
-// // Pause on hover//+
-// $track.hover(//+
-//   function() { clearInterval(intervalId); },//+
-//   startInterval//+
-// );//+
+$(".form-floating>button").on("click", function () {
+  $(".container").css("opacity", "1");
+  $(".form-signin").removeClass("open");
+});
 
 const $track = $(".carousel-track");
 const $slides = $(".carousel-item");
 const totalSlides = $slides.length;
-const $indicators = $(".carousel-indicator > span");
 
-let currentSlideIndex = 0;
+var totalIndicator = $(".carousel-indicator > span");
 let intervalId;
-
-function updateSlidePosition() {
-  const newPosition = -currentSlideIndex * 100 + "%";
-  $track.css("transform", `translateX(${newPosition})`);
-}
+var currentSlideIndex = 0;
 
 function updateActiveSlide() {
-  $indicators.removeClass("active");
-  $($indicators[currentSlideIndex]).addClass("active");
+  totalIndicator.removeClass("active");
+
+  $(totalIndicator[currentSlideIndex]).addClass("active");
 }
 
 function moveToSlide(index) {
@@ -105,39 +45,32 @@ function moveToSlide(index) {
   updateActiveSlide();
 }
 
-function nextSlide() {
-  moveToSlide(currentSlideIndex + 1);
-}
-
-function prevSlide() {
-  moveToSlide(currentSlideIndex - 1);
-}
-
-$(".btn-next").click(nextSlide);
-
-$(".btn-prev").click(prevSlide);
-
-// Allow clicking on indicators to jump to a slide
-$indicators.each(function (index) {
+totalIndicator.each(function (index) {
   $(this).click(function () {
     moveToSlide(index);
     resetInterval();
   });
 });
 
-function startInterval() {
-  intervalId = setInterval(nextSlide, 3000);
+function updateSlidePosition() {
+  const newPosition = -currentSlideIndex * 100 + "%";
+  $track.css("transform", `translateX(${newPosition})`);
 }
 
-function resetInterval() {
-  clearInterval(intervalId);
-  startInterval();
-}
+$(".btn-next").click(function () {
+  currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+  updateSlidePosition();
+  updateActiveSlide();
+});
 
-// Start automatic sliding
-startInterval();
+$(".btn-prev").click(function () {
+  currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+  updateSlidePosition();
+  updateActiveSlide();
+});
 
-// Pause on hover
-$track.hover(function () {
-  clearInterval(intervalId);
-}, startInterval);
+setInterval(function () {
+  currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+  updateSlidePosition();
+  updateActiveSlide();
+}, 3000);

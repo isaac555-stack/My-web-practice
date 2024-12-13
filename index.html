@@ -24,12 +24,22 @@
       </svg>
 
       <h1>ANIME HUB</h1>
-
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="2rem"
+        fill="white"
+        class="person-circle"
+        viewBox="0 0 16 16"
+      >
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+        <path
+          fill-rule="evenodd"
+          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+        />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
         id="bell"
-        fill="cyan"
+        fill="white"
         viewBox="0 0 16 16"
       >
         <path
@@ -46,7 +56,7 @@
       <div class="platforms">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="lightpink"
+          fill="white"
           class="bi bi-instagram"
           viewBox="0 0 16 16"
         >
@@ -57,7 +67,7 @@
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
+          fill="black"
           class="bi bi-discord"
           viewBox="0 0 16 16"
         >
@@ -68,7 +78,7 @@
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="red"
+          fill="white"
           class="bi bi-youtube"
           viewBox="0 0 16 16"
         >
@@ -90,7 +100,7 @@
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="blue"
+          fill="white"
           class="bi bi-facebook"
           viewBox="0 0 16 16"
         >
@@ -175,7 +185,27 @@
         <h4>Dashboard</h4>
       </div>
     </div>
+
+    <main class="form-signin">
+      <form method="post">
+        <h2>Please sign in</h2>
+        <div class="form-floating">
+          <label>Email address</label>
+
+          <input type="email" placeholder="name@gmail.com" required />
+          <label>Password</label>
+          <input placeholder="Password" required />
+          <button><h3>Sign In</h3></button>
+        </div>
+      </form>
+    </main>
     <div class="container">
+      <h2>RECOMMENDED ANIMES TO WATCH</h2>
+      <div class="outer">
+        <div class="line"></div>
+        <div class="circle"><h3>1</h3></div>
+      </div>
+
       <div class="blog">
         <div>
           <img
@@ -183,6 +213,7 @@
             src="./assets/demon slayer_files/demon-slayer-all-hashira-members-228@1@f-thumb.jpg"
           />
         </div>
+
         <small>Wednesday, December 25 , 2024</small>
         <div>
           <h2>Demon Slayer: Kimetsu no Yaiba</h2>
@@ -347,9 +378,11 @@
           <span></span>
         </div>
       </div>
-
+      <div class="outer">
+        <div class="line"></div>
+        <div class="circle"><h3>2</h3></div>
+      </div>
       <div class="blog">
-        <h2>2nd Trending Anime</h2>
         <div>
           <img
             class="carousel"
