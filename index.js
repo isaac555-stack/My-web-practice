@@ -17,7 +17,7 @@ $(".container").on("click", function () {
 
 $(".person-circle").on("click", function () {
   $(".form-signin").addClass("open");
-  $(".container").css("opacity", "0.3");
+  $(".container").css("opacity", "0.2");
 });
 
 $(".form-floating>button").on("click", function () {
@@ -25,12 +25,16 @@ $(".form-floating>button").on("click", function () {
   $(".form-signin").removeClass("open");
 });
 
-const $track = $(".carousel-track");
-const $slides = $(".carousel-item");
-const totalSlides = $slides.length;
+$(".list>h3").on("hover", function () {
+  $(".list>h3").css("border", "3px");
+});
+
+var $track = $(".carousel-track");
+var $slides = $(".carousel-item");
+var totalSlides = $slides.length;
 
 var totalIndicator = $(".carousel-indicator > span");
-let intervalId;
+var intervalId;
 var currentSlideIndex = 0;
 
 function updateActiveSlide() {

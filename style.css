@@ -4,11 +4,17 @@ body {
 }
 
 .container {
-  margin: 100px 5% 0 5%;
+  margin: 100px 5% 50px 5%;
 }
+
+.gradient-background {
+  background: linear-gradient(120deg, #006eff, #ff4c68, #124dce);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
+
 /* NavBar */
 .navbar {
-  background: linear-gradient(270deg, rgb(240, 9, 20), blue);
   display: flex;
   justify-content: space-between;
   color: rgb(255, 255, 255);
@@ -16,6 +22,7 @@ body {
   left: 0;
   top: 0;
   width: 100%;
+
   z-index: 2;
 }
 
@@ -91,21 +98,6 @@ body {
   color: white;
 }
 
-.navbar.collapse {
-  display: none;
-  position: fixed;
-  top: 75px;
-  z-index: 2;
-}
-
-.collapse > * {
-  display: flex;
-  margin-bottom: 15px;
-  margin-left: 20px;
-  font-size: larger;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-
 h2 {
   text-align: center;
   color: #05088b;
@@ -135,7 +127,7 @@ h2 {
   overflow-y: auto;
   visibility: hidden;
   margin-left: 20px;
-  background-color: rgb(49, 15, 56);
+  background-color: rgb(15, 13, 19);
   transition: transform 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
@@ -179,8 +171,7 @@ h2 {
   background-color: #888787;
   border: none;
   border-radius: 10px;
-  width: 100;
-  height: 100;
+
   padding-left: 10px;
   font-size: 20px;
   margin-right: 20px;
@@ -249,11 +240,11 @@ svg {
 .carousel {
   overflow: hidden;
   position: relative;
-  border-radius: 10px;
+
   box-shadow: 0 4px 10px rgb(18, 19, 22);
   width: 90%;
   margin-left: 5%;
-  margin-right: 5%;
+
   margin-bottom: 50px;
 }
 
@@ -309,7 +300,32 @@ svg {
   background-color: #070bff;
 }
 
+footer {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", Verdana,
+    sans-serif;
+  padding: 5px;
+  width: 100%;
+
+  color: white;
+
+  text-align: center;
+}
+.ubuntu {
+  animation: rotate 2s linear infinite;
+}
 /* Animations */
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 @keyframes wiggle {
   0%,
@@ -323,13 +339,12 @@ svg {
 }
 
 @keyframes rotate {
-  0%,
-  20%,
-  40%,
-  60%,
-  80%,
+  0% {
+    rotate: 0deg;
+  }
+
   100% {
-    rotate: 30deg;
+    rotate: 360deg;
   }
 }
 
@@ -387,6 +402,11 @@ svg {
     left: 15px;
 
     position: fixed;
+  }
+
+  .blog-post > img {
+    height: 100%;
+    width: 100%;
   }
 
   .form-floating > input {
