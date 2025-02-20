@@ -29,52 +29,55 @@ $(".list>h3").on("hover", function () {
   $(".list>h3").css("border", "3px");
 });
 
-var $track = $(".carousel-track");
-var $slides = $(".carousel-item");
-var totalSlides = $slides.length;
+function initializeCarousel(carouselSelector) {
+  var $track = $(".carousel-track");
+  var $slides = $(".carousel-item");
+  var totalSlides = $slides.length;
 
-var totalIndicator = $(".carousel-indicator > span");
-var intervalId;
-var currentSlideIndex = 0;
+  var totalIndicator = $(".carousel-indicator > span");
+  var intervalId;
+  var currentSlideIndex = 0;
 
-function updateActiveSlide() {
-  totalIndicator.removeClass("active");
+  function updateActiveSlide() {
+    totalIndicator.removeClass("active");
 
-  $(totalIndicator[currentSlideIndex]).addClass("active");
-}
+    $(totalIndicator[currentSlideIndex]).addClass("active");
+  }
 
-function moveToSlide(index) {
-  currentSlideIndex = (index + totalSlides) % totalSlides;
-  updateSlidePosition();
-  updateActiveSlide();
-}
+  function moveToSlide(index) {
+    currentSlideIndex = (index + totalSlides) % totalSlides;
+    updateSlidePosition();
+    updateActiveSlide();
+  }
 
-totalIndicator.each(function (index) {
-  $(this).click(function () {
-    moveToSlide(index);
-    resetInterval();
+  totalIndicator.each(function (index) {
+    $(this).click(function () {
+      moveToSlide(index);
+      resetInterval();
+    });
   });
-});
 
-function updateSlidePosition() {
-  const newPosition = -currentSlideIndex * 100 + "%";
-  $track.css("transform", `translateX(${newPosition})`);
+  function updateSlidePosition() {
+    const newPosition = -currentSlideIndex * 100 + "%";
+    $track.css("transform", `translateX(${newPosition})`);
+  }
+
+  $(".btn-next").click(function () {
+    currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+    updateSlidePosition();
+    updateActiveSlide();
+  });
+
+  $(".btn-prev").click(function () {
+    currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+    updateSlidePosition();
+    updateActiveSlide();
+  });
+
+  setInterval(function () {
+    currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+    updateSlidePosition();
+    updateActiveSlide();
+  }, 3000);
 }
-
-$(".btn-next").click(function () {
-  currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
-  updateSlidePosition();
-  updateActiveSlide();
-});
-
-$(".btn-prev").click(function () {
-  currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
-  updateSlidePosition();
-  updateActiveSlide();
-});
-
-setInterval(function () {
-  currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
-  updateSlidePosition();
-  updateActiveSlide();
-}, 3000);
+initializeCarousel(".carousel1");
